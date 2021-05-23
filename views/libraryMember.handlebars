@@ -1,0 +1,126 @@
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Library Databse</title>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    </head>
+
+
+  <body>
+   
+    <h1> Library Members:  Add, Select, Delete, Edit and Search Library Members</h1>
+
+    <fieldset class = "fieldAdd">
+        <h3>Add Library Member to Database:</h3>
+  
+        <div>
+          <label>First Name:
+              <input type="text" size="30" maxlength="100">
+          </label>
+        </div>
+  
+        <div>
+          <label>Last Name:
+              <input type="text" size="30" maxlength="100">
+          </label>
+        </div>
+        <button type="button">Submit</button>
+      </fieldset>
+      
+
+   <fieldset class = "fieldSearch">
+    <div>
+        <h3>Search Members:  </h3>
+      <label>First Name:  <input type="text" size="30" maxlength="100">
+      </label>
+      <label>Last Name:  <input type="text" size="30" maxlength="100">
+      </label>
+
+
+      <button type="button">Submit</button>
+    </div>
+      <p>
+
+  <h3>All Members/ Search Results:</h3>
+    
+
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>memberID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+              </tr>
+            </thead>
+
+              <tbody>
+              <tr>
+                <td>21</td>
+                <td>Gracie</td>
+                <td>Allen</td>
+                <td><button type="button">Select</button></td>
+                <td><button type="button">Edit</button></td>
+                <td><button type="button">Delete</button></td>
+
+              </tr>
+              <tr>
+                <td>13</td>
+                <td>Daveed</td>
+                <td>DeFrats</td>
+                <td><button type="button">Select</button></td>
+                <td><button type="button">Edit</button></td>
+                <td><button type="button">Delete</button></td>
+              </tr>
+              <tr>
+                <td>14</td>
+                <td>Sammy</td>
+                <td>Seens</td>
+                <td><button type="button">Select</button></td>
+                <td><button type="button">Edit</button></td>
+                <td><button type="button">Delete</button></td>
+              </tr>
+              </tbody>
+
+              
+          </table>
+              
+    </div><p>
+      <button type="button">Clear Search Results (Show All Members)</button>
+    </fieldset>
+
+<h2>Results</h2>
+            {{#if results}}
+            <table>
+                <thead>
+                  <tr>
+                      <th>memberID</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    <!--Iterate through the results from the members table and append a new row for each record -->
+                    {{#each results}}
+                    <tr id="tr">
+                        <td >{{this.memberID}}</td>
+                        <td>{{this.firstName}}</td>
+                        <td>{{this.lastName}}</td>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <!--If no members, display this -->
+            {{else}}
+            <p>There are no members to display.</p>
+            {{/if}}
+        </div>
+        <div class="col">
+        </div>
+    </div>
+</div>
+
+<script src="js/membersAdd.js"></script>

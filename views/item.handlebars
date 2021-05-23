@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Library Databse</title>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    </head>
+
+
+  <body>
+
+    <h1>Item Data: Add and Select Items</h1>
+
+
+  <form>
+    <fieldset = class = "fieldAdd">
+
+      <h3>Add Item to data base:</h3>
+
+      <!-- itemID: int, auto_increment, unique, not NULL
+itemType: VARCHAR; 
+Constraint:  must be a book, DVD, or e-book
+title: VARCHAR, not NULL
+datePublished: date, not NULL -->
+
+
+      <div>
+        <label for="item type">Item Type:</label>
+        <select name="item type" id="item type">
+          <option value="book">Book</option>
+          <option value="ebook">e-Book</option>
+          <option value="dvd">DVD</option>
+        </select>
+
+      <div>
+        <label>Title:
+            <input type="text" size="30" maxlength="100">
+        </label>
+      </div>
+
+      <div>
+        <label>Date Published:
+            <input type="DATE">
+        </label>
+      </div>
+      <button type="button">Submit</button>
+
+
+       </fieldset>
+          <p>
+  
+
+    <fieldset class = "fieldSearch">
+
+      <h3>All Items:</h3>
+        
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>itemID</th>
+                    <th>Item Type</th>
+                    <th>Title</th>
+                    <th>Date Published</th>
+                  </tr>
+                </thead>
+  
+                  <tbody>
+                  <tr>
+                    <td>222</th>
+                    <td>DVD</th>
+                    <td>Pirates</th>
+                    <td>04/05/2021</th>
+                    <td><button type="button">Select</button></td>
+                  </tr>
+                  <tr>
+                    <td>221</th>
+                    <td>e-book</th>
+                    <td>Everything Pasta</th>
+                    <td>09/04/1999</th>
+                    <td><button type="button">Select</button></td>
+                  </tr>
+
+                  <tr>
+                    <td>220</th>
+                    <td>Book</th>
+                    <td>Dear Miss Lolo</th>
+                    <td>12/04/2002</th>
+                    <td><button type="button">Select</button></td>
+                  </tr>
+
+                  <tr>
+                    <td>219</th>
+                    <td>e-book</th>
+                    <td>Everybody Eats</th>
+                    <td>09/10/2020</th>
+                    <td><button type="button">Select</button></td>
+                  </tr>
+                  </tbody>
+  
+                  
+              </table>
+  
+
+
+    </fieldset>
+  
+   
+  </body>
+</html>

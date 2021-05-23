@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Library Databse</title>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    </head>
+
+
+  <body>
+
+    <h1> Order Details: Add, Select and Delete Orders </h1>
+    <fieldset class = "fieldAdd"><form>
+      <h3>Add Order to Database:</h3>
+
+      <div>
+        <label>Date:
+            <input type="date">
+        </label>
+      </div>
+
+      <div>
+        <label>Member ID:
+            <input type="int" size="30" maxlength="100">
+        </label>
+      </div>
+      <button type="button">Submit</button>
+    </fieldset>
+    
+
+ <fieldset class = "fieldSearch">
+  <div>
+      <h3>Order Search:  </h3>
+      <label>Order Number:  <input type="int" size="30" maxlength="100">
+      </label>
+    <label>Date:  <input type="date">
+    </label>
+    <label>Member ID:  <input type="int" size="30" maxlength="100">
+    </label>
+
+
+    <button type="button">Submit</button>
+  </div>
+    <p>
+
+<h3>All Orders/ Search Results:</h3>
+
+  
+
+  <div>
+      <table>
+          <thead>
+          <tr>
+              <th>Date</th>
+              <th>Order Number</th>
+              <th>Member ID</th>
+            </tr>
+          </thead>
+
+            <tbody>
+            <tr>
+              <td>04/04/2021</th>
+              <td>2</th>
+              <td>21</th>
+              <td><button type="button">Select</button></td>
+              <td><button type="button">Delete</button></td>
+
+            </tr>
+            <tr>
+              <td>01/11/2021</th>
+              <td>3</th>
+              <td>13</th>
+              <td><button type="button">Select</button></td>
+              <td><button type="button">Delete</button></td>
+            </tr>
+
+            <tr>
+              <td>01/11/2021</th>
+              <td>4</th>
+              <td>14</th>
+              <td><button type="button">Select</button></td>
+              <td><button type="button">Delete</button></td>
+            </tr>
+            </tbody>
+
+            
+        </table>
+            
+  </div><p>
+    <button type="button">Clear Search Results (Show All Catalog Items)</button>
+  </fieldset>
+
+  </body>
+</html>
