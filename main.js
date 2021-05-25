@@ -22,7 +22,7 @@ app.use('/item', express.static('public'));
 app.use('/authorRecord', express.static('public'));
 
 
-app.engine('handlebars', exphbs());
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 app.get('/', function (req, res) {
