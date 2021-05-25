@@ -7,11 +7,12 @@ var express = require('express');
 var exphbs = require('express-handlebars');
 let mysql = require('mysql');
 var db = require('./dbcon.js');
+var PORT = 5051
 
 
 var app = express();
 app.use('/static', express.static('public'));
-app.set('port', process.argv[2]);
+// app.set('port', process.argv[2]);
 app.use('/', express.static('public'));
 app.use('/home', express.static('public'));
 app.use('/libraryMember', express.static('public'));
@@ -33,29 +34,69 @@ app.get('/home', function (req, res) {
 });
 
 app.get('/libraryMember', function (req, res) {
-  res.render('libraryMember');
+  let query = 'SELECT memberID, firstName, lastName FROM Member;';
+	db.pool.query(query, function(error, rows, fields){
+		if(error){
+			console.log("Query Failure. Error Code: " + error.code);
+			res.status(400);
+			return;
+		}
+		res.status(200).render('libraryMember');
+  });
 });
 
 
 app.get('/order', function (req, res) {
-  res.render('order');
+  let query = 'SELECT date, orderNumber, memberID FROM Orders;';
+	db.pool.query(query, function(error, rows, fields){
+		if(error){
+			console.log("Query Failure. Error Code: " + error.code);
+			res.status(400);
+			return;
+		}
+		res.status(200).render('order');
+	});
 });
 
 app.get('/catalogItem', function (req, res) {
-  res.render('catalogItem');
+  let query = 'SELECT itemID, checkedOut, checkoutPeriod FROM CatalogItems;';
+	db.pool.query(query, function(error, rows, fields){
+		if(error){
+			console.log("Query Failure. Error Code: " + error.code);
+			res.status(400);
+			return;
+		}
+		res.status(200).render('catalogItem');
+	});
 });
 
 app.get('/item', function (req, res) {
-  res.render('item');
+  let query = 'SELECT itemID, itemType, title, datePublished FROM ItemData;';
+	db.pool.query(query, function(error, rows, fields){
+		if(error){
+			console.log("Query Failure. Error Code: " + error.code);
+			res.status(400);
+			return;
+		}
+		res.status(200).render('item');
+	});
 });
 
 app.get('/authorRecord', function (req, res) {
-  res.render('authorRecord');
+  let query = 'SELECT authorID, itemID FROM AuthorItem;';
+	db.pool.query(query, function(error, rows, fields){
+		if(error){
+			console.log("Query Failure. Error Code: " + error.code);
+			res.status(400);
+			return;
+		}
+		res.status(200).render('authorRecord');
+	});
 });
 
 
 
 
-app.listen(app.get('port'), function () {
-  console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
+app.listen(PORT, function () {
+  console.log('Express started on http://localhost:' + PORT + '; press Ctrl-C to terminate.');
 });
