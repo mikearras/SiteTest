@@ -7,11 +7,12 @@ var express = require('express');
 var exphbs = require('express-handlebars');
 let mysql = require('mysql');
 var db = require('./dbcon.js');
+var PORT = 5051
 
 
 var app = express();
 app.use('/static', express.static('public'));
-app.set('port', process.argv[2]);
+// app.set('port', process.argv[2]);
 app.use('/', express.static('public'));
 app.use('/home', express.static('public'));
 app.use('/libraryMember', express.static('public'));
@@ -33,7 +34,7 @@ app.get('/home', function (req, res) {
 });
 
 app.get('/libraryMember', function (req, res) {
-  let query = 'SELECT memberID, firstName, lastName FROM Members;';
+  let query = 'SELECT memberID, firstName, lastName FROM Member;';
 	db.pool.query(query, function(error, rows, fields){
 		if(error){
 			console.log("Query Failure. Error Code: " + error.code);
@@ -70,7 +71,7 @@ app.get('/catalogItem', function (req, res) {
 });
 
 app.get('/item', function (req, res) {
-  let query = 'SELECT itemID, itemType, title, datePublished FROM Items;';
+  let query = 'SELECT itemID, itemType, title, datePublished FROM ItemData;';
 	db.pool.query(query, function(error, rows, fields){
 		if(error){
 			console.log("Query Failure. Error Code: " + error.code);
@@ -82,7 +83,7 @@ app.get('/item', function (req, res) {
 });
 
 app.get('/authorRecord', function (req, res) {
-  let query = 'SELECT authorID, itemID FROM AuthorItems;';
+  let query = 'SELECT authorID, itemID FROM AuthorItem;';
 	db.pool.query(query, function(error, rows, fields){
 		if(error){
 			console.log("Query Failure. Error Code: " + error.code);
@@ -96,6 +97,6 @@ app.get('/authorRecord', function (req, res) {
 
 
 
-app.listen(app.get('port'), function () {
-  console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
+app.listen(PORT, function () {
+  console.log('Express started on http://localhost:' + PORT + '; press Ctrl-C to terminate.');
 });
