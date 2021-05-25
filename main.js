@@ -41,7 +41,7 @@ app.get('/libraryMember', function (req, res) {
 			res.status(400);
 			return;
 		}
-		res.status(200).render('libraryMember');
+		res.status(200).render('libraryMember', {member: rows});
   });
 });
 

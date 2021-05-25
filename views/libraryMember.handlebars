@@ -46,81 +46,12 @@
   <h3>All Members/ Search Results:</h3>
     
 
-    <div>
-        <table>
-            <thead>
-            <tr>
-                <th>memberID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-              </tr>
-            </thead>
-
-              <tbody>
-              <tr>
-                <td>21</td>
-                <td>Gracie</td>
-                <td>Allen</td>
-                <td><button type="button">Select</button></td>
-                <td><button type="button">Edit</button></td>
-                <td><button type="button">Delete</button></td>
-
-              </tr>
-              <tr>
-                <td>13</td>
-                <td>Daveed</td>
-                <td>DeFrats</td>
-                <td><button type="button">Select</button></td>
-                <td><button type="button">Edit</button></td>
-                <td><button type="button">Delete</button></td>
-              </tr>
-              <tr>
-                <td>14</td>
-                <td>Sammy</td>
-                <td>Seens</td>
-                <td><button type="button">Select</button></td>
-                <td><button type="button">Edit</button></td>
-                <td><button type="button">Delete</button></td>
-              </tr>
-              </tbody>
-
-              
-          </table>
-              
-    </div><p>
+  </div><p>
       <button type="button">Clear Search Results (Show All Members)</button>
     </fieldset>
 
 <h2>Results</h2>
-            {{#if results}}
-            <table>
-                <thead>
-                  <tr>
-                      <th>memberID</th>
-                      <th>First Name</th>
-                      <th>Last Name</th>
-                    </tr>
-                </thead>
-                <tbody id="tbody">
-                    <!--Iterate through the results from the members table and append a new row for each record -->
-                    {{#each results}}
-                    <tr id="tr">
-                        <td >{{this.memberID}}</td>
-                        <td>{{this.firstName}}</td>
-                        <td>{{this.lastName}}</td>
-                        </td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-            <!--If no members, display this -->
-            {{else}}
-            <p>There are no members to display.</p>
-            {{/if}}
-        </div>
-        <div class="col">
-        </div>
-    </div>
-</div>
-
-<script src="js/membersAdd.js"></script>
+           {{#each member}}
+			{{> member_data}}
+		{{/each}}<br>
+		
