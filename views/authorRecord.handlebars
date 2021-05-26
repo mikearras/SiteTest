@@ -77,8 +77,10 @@
 </html> --}}
 <html>
 
+{{!-- this should match authorrecord.js the add author section --}}
 <h3>Add new authors:</h3>
-<form id="addperson" action="/people" method="post">
+<form id="addauthor" action="/authorRecord" method="post">
+    {{!-- make sure the name="" matches the sql insert name in authorrecord.js --}}
     First name: <input type="text" name="firstName"><br>
     Last name: <input type="text" name="lastName"><br>
     <input type="submit" value="Submit">
@@ -93,14 +95,14 @@
         <option value="{{authorID}}">{{lastName}}</option>
         {{/each}}
     </select><br>
-    {{!-- <input type="button" value="Filter" onclick="filterPeopleByHomeworld()"> --}}
+    <input type="button" value="Filter" onclick="filterAuthorLastName()">
 </form>
 
 <form id='search_people' action='' method=''>
 <!--- this form does not submit directly, the button handles all the interaction with backend -->
     <label> Search people for first name starting with:</label>
     <input id='first_name_search_string' type='text' name='first_name_search_string' value=''>
-    {{!-- <input type="button" value="Search" onclick="searchPeopleByFirstName()"> --}}
+    <input type="button" value="Search" onclick="searchAuthorByFirstName()">
 </form>
 
 {{!-- SHOW ALL DATA IN DATABASE --}}
@@ -123,4 +125,3 @@
         {{/each}} 
     </tbody> 
 </table> 
-</html>

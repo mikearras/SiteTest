@@ -115,9 +115,12 @@ datePublished: date, not NULL -->
 <html>
 
 <h3>Add Items:</h3>
-<form id="addperson" action="/people" method="post">
-    First name: <input type="text" name="firstName"><br>
-    Last name: <input type="text" name="lastName"><br>
+<form id="additem" action="/item" method="post">
+    {{!-- make sure the name="" matches the sql insert name in authorrecord.js --}}
+    Item ID: <input type="text" name="itemID"><br>
+    Item Type <input type="text" name="itemType"><br>
+    Title: <input type="text" name="title"><br>
+    Date Published: <input type="date" name="datePublished"><br>
     <input type="submit" value="Submit">
  </form>
 <br/>

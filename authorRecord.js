@@ -110,24 +110,23 @@ module.exports = function(){
     //     }
     // });
 
-    // /* Adds a person, redirects to the people page after adding */
+    /* Adds an Author*/
 
-    // router.post('/', function(req, res){
-    //     console.log(req.body.homeworld)
-    //     console.log(req.body)
-    //     var mysql = req.app.get('mysql');
-    //     var sql = "INSERT INTO bsg_people (fname, lname, homeworld, age) VALUES (?,?,?,?)";
-    //     var inserts = [req.body.fname, req.body.lname, req.body.homeworld, req.body.age];
-    //     sql = mysql.pool.query(sql,inserts,function(error, results, fields){
-    //         if(error){
-    //             console.log(JSON.stringify(error))
-    //             res.write(JSON.stringify(error));
-    //             res.end();
-    //         }else{
-    //             res.redirect('/people');
-    //         }
-    //     });
-    // });
+    router.post('/', function(req, res){
+        var mysql = req.app.get('mysql');
+        var sql = "INSERT INTO AuthorRecords (firstName, lastName) VALUES (?,?)";
+        // these insert values should match the variables in authorRecord.handlebars
+        var inserts = [req.body.firstName, req.body.lastName];
+        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+            if(error){
+                console.log(JSON.stringify(error))
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+                res.redirect('/authorRecord');
+            }
+        });
+    });
 
     // /* The URI that update data is sent to in order to update a person */
 

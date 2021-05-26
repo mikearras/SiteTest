@@ -29,6 +29,24 @@ module.exports = function(){
         }
     });
 
+   /* Adds an Author*/
+
+   router.post('/', function(req, res){
+    var mysql = req.app.get('mysql');
+    var sql = "INSERT INTO ItemData (itemId, itemType, title, datePublished) VALUES (?,?, ?, ?)";
+    // these insert values should match the variables in authorRecord.handlebars
+    var inserts = [req.body.itemId, req.body.itemType, req.body.title, req.body.datePublished];
+    sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+        if(error){
+            console.log(JSON.stringify(error))
+            res.write(JSON.stringify(error));
+            res.end();
+        }else{
+            res.redirect('/item');
+        }
+        });
+    });
+
 
     return router;
 }();
