@@ -10,49 +10,38 @@
 
   <body>
    
-    <h1> Library Members:  Add, Select, Delete, Edit and Search Library Members</h1>
+<h1> Library Members:  Add, Select, Delete, Edit and Search Library Members</h1>
 
-    <fieldset class = "fieldAdd">
-        <h3>Add Library Member to Database:</h3>
-  
-        <div>
-          <label>First Name:
-              <input type="text" size="30" maxlength="100">
-          </label>
-        </div>
-  
-        <div>
-          <label>Last Name:
-              <input type="text" size="30" maxlength="100">
-          </label>
-        </div>
-        <button type="button">Submit</button>
-      </fieldset>
-      
-
-   <fieldset class = "fieldSearch">
-    <div>
-        <h3>Search Members:  </h3>
-      <label>First Name:  <input type="text" size="30" maxlength="100">
-      </label>
-      <label>Last Name:  <input type="text" size="30" maxlength="100">
-      </label>
-
-
-      <button type="button">Submit</button>
-    </div>
-      <p>
-
-  <h3>All Members/ Search Results:</h3>
     
+{{!-- this should match libraryMember.js the add member section --}}
+<h3>Add new library member:</h3>
+<form class = "form" id="addmember" action="/libraryMember" method="post">
+   <label for="fname">First name:</label>
+   <input type="text" name="firstName"><br>
+    <label for="lname">Last name:</label>
+	<input type="text" name="lastName"><br>
+   <input type="submit" value="Submit"> 
+ </form>
+<br/>
 
-  </div><p>
-      <button type="button">Clear Search Results (Show All Members)</button>
-    </fieldset>
 
-<h2>Results</h2>
-           {{#each member}}
-			{{> member_data}}
-			<p></p>
-		{{/each}}
+<h3>Current Members:</h3>
+<table>
+    <thead> 
+        <th>First Name</th> 
+        <th>Last Name</th> 
+    </thead> 
+    <tbody>
+        {{#each members}} 
+        <tr> 
+            <td>{{firstName}}</td> 
+            <td>{{lastName}}</td> 
+            {{!-- run javascript delete --}}
+            <td><button onclick="deleteAuthor({{id}})">Delete</button></td>
+            {{!-- go to update page --}}
+            <td><a href="/libraryMember/{{id}}">Update</a></td> 
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table> 
 		

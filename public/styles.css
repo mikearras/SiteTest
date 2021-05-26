@@ -1,11 +1,13 @@
 table {
-    width: 100%;
+    width: .5em;
     border-collapse: collapse;
+	table-layout: auto;
 }
 
 th, td, tr {
     border: 1px solid black;
     padding:  5px;
+	
     
 }
 
@@ -60,3 +62,26 @@ thead{
 
     background-color: white;
   }
+
+.form {
+	
+	border: 1px solid black;
+	border-radius: 7px;
+	padding-top: .5em;
+	width: 25%;
+	
+}
+
+.form input {
+
+	margin-left:  .5em;
+	margin-top:  .5em;
+	margin-bottom: .5em;
+
+}
+
+.form label{
+	margin-left:  .5em;
+	margin-top:  .5em;
+}
+

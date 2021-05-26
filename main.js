@@ -17,29 +17,14 @@ app.engine('handlebars', handlebars.engine);
 app.use(bodyParser.urlencoded({extended:true}));
 app.use('/static', express.static('public'));
 app.set('view engine', 'handlebars');
-// app.set('port', process.argv[2]);
 app.set('mysql', mysql);
-app.use('/authorRecord', require('./authorRecord.js'));
+app.use('/authorRecord', require('./authorRecord.js'), express.static('public'));
 app.use('/catalogItem', require('./catalogItem.js'));
 app.use('/item', require('./item.js'));
 app.use('/order', require('./order.js'));
 app.use('/', express.static('public'));
-
-// var express = require('express');
-// var exphbs = require('express-handlebars');
-// let mysql = require('mysql');
-// var db = require('./dbcon.js');
-// var bodyParser = require('body-parser');
-// var PORT = 5051
-
-
-
-// var app = express();
-// app.use('/static', express.static('public'));
-// // app.set('port', process.argv[2]);
-// app.use('/', express.static('public'));
-// app.use('/home', express.static('public'));
-// app.use('/libraryMember', express.static('public'));
+app.use('/home', express.static('public'));
+app.use('/libraryMember', require('./libraryMember.js'), express.static('public'));
 // app.use('/order', express.static('public'));
 // app.use('/catalogItem', express.static('public'));
 // app.use('/item', express.static('public'));
@@ -50,13 +35,10 @@ app.use('/', express.static('public'));
 // app.set('view engine', 'handlebars');
 // app.set('mysql', mysql);
 
-// app.get('/', function (req, res) {
-//   res.render('home');
-// });
 
-// app.get('/home', function (req, res) {
-//   res.render('home');
-// });
+ app.get('/home', function (req, res) {
+  res.render('home');
+});
 
 // app.get('/libraryMember', function (req, res) {
 //   let query = 'SELECT memberID, firstName, lastName FROM Member;';
