@@ -103,6 +103,7 @@
     {{!-- <input type="button" value="Search" onclick="searchPeopleByFirstName()"> --}}
 </form>
 
+{{!-- SHOW ALL DATA IN DATABASE --}}
 <h3>Current Authors:</h3>
 <table>
     <thead> 
@@ -115,9 +116,9 @@
             <td>{{firstName}}</td> 
             <td>{{lastName}}</td> 
             {{!-- run javascript delete --}}
-            {{!-- <td><button onclick="deleteAuthor({{id}})">Delete</button></td> --}}
+            <td><button onclick="deleteAuthor({{id}})">Delete</button></td>
             {{!-- go to update page --}}
-            {{!-- <td><a href="/authorRecord/{{id}}">Update</a></td>  --}}
+            <td><a href="/authorRecord/{{id}}">Update</a></td> 
         </tr> 
         {{/each}} 
     </tbody> 

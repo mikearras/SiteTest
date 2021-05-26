@@ -20,6 +20,8 @@ app.set('view engine', 'handlebars');
 // app.set('port', process.argv[2]);
 app.set('mysql', mysql);
 app.use('/authorRecord', require('./authorRecord.js'));
+app.use('/catalogItem', require('./catalogItem.js'));
+app.use('/item', require('./item.js'));
 app.use('/', express.static('public'));
 
 // var express = require('express');

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{!-- <!DOCTYPE html>
 <html>
 
 <head>
@@ -131,4 +131,42 @@
 
    
   </body>
+</html> --}}
+
+
+<html>
+
+<h3>Add new catalog Items:</h3>
+<form id="addperson" action="/people" method="post">
+    First name: <input type="text" name="firstName"><br>
+    Last name: <input type="text" name="lastName"><br>
+    <input type="submit" value="Submit">
+ </form>
+<br/>
+
+
+{{!-- SHOW ALL DATA IN DATABASE --}}
+<h3>Current Catalog Items:</h3>
+<table>
+    <thead> 
+        <th>catalogID</th> 
+        <th>itemID</th> 
+        <th>checkedOut</th> 
+        <th>checkoutPeriod</th> 
+    </thead> 
+    <tbody>
+        {{#each catalogItem}} 
+        <tr> 
+            <td>{{catalogID}}</td> 
+            <td>{{itemID}}</td>
+            <td>{{checkedOut}}</td> 
+            <td>{{checkoutPeriod}}</td>
+            {{!-- run javascript delete --}}
+            <td><button onclick="deleteAuthor({{id}})">Delete</button></td>
+            {{!-- go to update page --}}
+            <td><a href="/authorRecord/{{id}}">Update</a></td> 
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table> 
 </html>
