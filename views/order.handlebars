@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{!-- <!DOCTYPE html>
 <html>
 
 <head>
@@ -94,4 +94,41 @@
   </fieldset>
 
   </body>
+</html> --}}
+
+
+<html>
+
+<h3>Add new order:</h3>
+<form id="addperson" action="/people" method="post">
+    Order Date: <input type="text" name="firstName"><br>
+    Order Number: <input type="text" name="lastName"><br>
+    Member ID: <input type="text" name="lastName"><br>
+    <input type="submit" value="Submit">
+ </form>
+<br/>
+
+
+{{!-- SHOW ALL DATA IN DATABASE --}}
+<h3>Current Orders:</h3>
+<table>
+    <thead> 
+        <th>orderDate</th> 
+        <th>orderNumber</th> 
+        <th>memberId</th> 
+    </thead> 
+    <tbody>
+        {{#each order}} 
+        <tr> 
+            <td>{{orderDate}}</td> 
+            <td>{{orderNumber}}</td>
+            <td>{{memberId}}</td> 
+            {{!-- run javascript delete --}}
+            <td><button onclick="deleteAuthor({{id}})">Delete</button></td>
+            {{!-- go to update page --}}
+            <td><a href="/authorRecord/{{id}}">Update</a></td> 
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table> 
 </html>

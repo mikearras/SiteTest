@@ -22,6 +22,7 @@ app.set('mysql', mysql);
 app.use('/authorRecord', require('./authorRecord.js'));
 app.use('/catalogItem', require('./catalogItem.js'));
 app.use('/item', require('./item.js'));
+app.use('/order', require('./order.js'));
 app.use('/', express.static('public'));
 
 // var express = require('express');
