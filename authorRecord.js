@@ -8,7 +8,7 @@ module.exports = function(){
                 res.write(JSON.stringify(error));
                 res.end();
             }
-            context.planets  = results;
+            context.authors  = results;
             complete();
         });
     }
@@ -50,14 +50,12 @@ module.exports = function(){
         var context = {};
         // context.jsscripts = ["deleteperson.js","filterpeople.js","searchpeople.js"];
         var mysql = req.app.get('mysql');
-        getPeople(res, mysql, context, complete);
-        getPlanets(res, mysql, context, complete);
+        getAuthors(res, mysql, context, complete);
         function complete(){
             callbackCount++;
-            if(callbackCount >= 2){
-                res.render('people', context);
+            if(callbackCount >= 1){
+                res.render('authorRecord', context);
             }
-
         }
     });
 
