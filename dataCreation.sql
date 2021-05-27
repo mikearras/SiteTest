@@ -19,11 +19,12 @@ PRIMARY KEY (`memberID`)
 
 
 CREATE TABLE Orders (  
-`orderDate` date NOT NULL,  
-`orderNumber` int(11) NOT NULL AUTO_INCREMENT, 
-`memberID` int(11) NOT NULL, 
-PRIMARY KEY (`orderNumber`),
-FOREIGN KEY (memberID) REFERENCES Member(memberID)
+orderDate date NOT NULL,  
+orderNumber int(11) NOT NULL AUTO_INCREMENT, 
+memberID int(11) NOT NULL, 
+PRIMARY KEY (orderNumber),
+CONSTRAINT memberID FOREIGN KEY (memberID) 
+    REFERENCES Member(memberID)
 ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -55,15 +56,6 @@ CONSTRAINT `orderNumber` FOREIGN KEY (`orderNumber`)
 );
 
 
-
-CREATE TABLE AuthorRecords (
-    authorID int AUTO_INCREMENT NOT NULL,
-    firstName varchar(255) NOT NULL,
-    lastName varchar(255) NOT NULL,
-    PRIMARY KEY (authorID)
-);
-
-
 CREATE TABLE AuthorItem (
 	`authorID` int(11) NOT NULL,
     `itemID` int(11) NOT NULL,
@@ -76,20 +68,31 @@ CONSTRAINT `itemID` FOREIGN KEY (`itemID`)
 
 
 
+CREATE TABLE AuthorRecords (
+    authorID int AUTO_INCREMENT NOT NULL,
+    firstName varchar(255) NOT NULL,
+    lastName varchar(255) NOT NULL,
+    PRIMARY KEY (authorID)
+);
+
+
+
+
+
+
 
 INSERT INTO AuthorRecords (
-    authorID,
     firstName,
     lastName
     ) VALUES
-("100", "Roxane", "Gay"),
-("200", "Amy", "Tan"),
-("300", "Yaa", "Gyasi");
+("Roxane", "Gay"),
+("Amy", "Tan"),
+("Yaa", "Gyasi");
 
 
 
 INSERT INTO
-`MEMBER` (`firstName`, `lastName`)
+`Member` (`firstName`, `lastName`)
 
 VALUES
 ('Steve', 'Jones'),
@@ -102,14 +105,13 @@ VALUES
 
 
 INSERT INTO ItemData (
-    itemID,
     itemType,
     title,
     datePublished
     ) VALUES
-("1", "Book", "Hunger", "2017-06-13"),
-("2", "Book", "Joy Luck Club", "1989-01-19"),
-("3", "e-Book", "Homegoing", "2016-06-16");
+("Book", "Hunger", "2017-06-13"),
+("Book", "Joy Luck Club", "1989-01-19"),
+("e-Book", "Homegoing", "2016-06-16");
 
 INSERT INTO AuthorItem (
     authorID,
@@ -122,14 +124,13 @@ INSERT INTO AuthorItem (
 
 
 INSERT INTO CatalogItems (
-    catalogID,
     itemID,
     checkedOut,
     checkoutPeriod
     ) VALUES
-("10", '1', '1', 30),
-("20",'2', '0', 30),
-("30", '3', '1', 20);
+('1', '1', 30),
+('2', '0', 30),
+('3', '1', 20);
 
 INSERT INTO
 `Orders` (`orderDate`, `memberID`)

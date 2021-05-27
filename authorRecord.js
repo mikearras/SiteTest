@@ -48,7 +48,7 @@ module.exports = function(){
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
-        // context.jsscripts = ["deleteperson.js","filterpeople.js","searchpeople.js"];
+        context.jsscripts = ["deleteFunctions.js"];
         var mysql = req.app.get('mysql');
         getAuthors(res, mysql, context, complete);
         function complete(){
@@ -127,6 +127,26 @@ module.exports = function(){
             }
         });
     });
+	
+	
+	
+	
+		
+	  router.delete('/:id', function(req, res){
+        var mysql = req.app.get('mysql');
+        var sql = "DELETE FROM  AuthorRecords WHERE authorID = ?";
+        var inserts = [req.params.id];
+        sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                console.log(error);
+                res.write(JSON.stringify(error));
+                res.status(400);
+                res.end();
+            }else{
+                res.status(202).end();
+            }
+        })
+    })
 
     // /* The URI that update data is sent to in order to update a person */
 

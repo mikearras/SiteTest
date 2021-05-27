@@ -115,12 +115,13 @@
     <tbody>
         {{#each authors}} 
         <tr> 
+			<td>{{authorID}}</td>
             <td>{{firstName}}</td> 
             <td>{{lastName}}</td> 
             {{!-- run javascript delete --}}
-            <td><button onclick="deleteAuthor({{id}})">Delete</button></td>
+            <td><button onclick="deleteAuthor({{authorID}})">Delete</button></td>
             {{!-- go to update page --}}
-            <td><a href="/authorRecord/{{id}}">Update</a></td> 
+            <td><a href="/authorRecord/{{authorID}}">Update</a></td> 
         </tr> 
         {{/each}} 
     </tbody> 

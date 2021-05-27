@@ -1,4 +1,3 @@
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Library Databse</title>
@@ -28,18 +27,20 @@
 <h3>Current Members:</h3>
 <table>
     <thead> 
+		<th>MemberID</th>
         <th>First Name</th> 
         <th>Last Name</th> 
     </thead> 
     <tbody>
         {{#each members}} 
         <tr> 
+			<td>{{memberID}}</td>
             <td>{{firstName}}</td> 
             <td>{{lastName}}</td> 
             {{!-- run javascript delete --}}
-            <td><button onclick="deleteAuthor({{id}})">Delete</button></td>
+            <td><button onclick="deleteMember({{memberID}})">Delete</button></td>
             {{!-- go to update page --}}
-            <td><a href="/libraryMember/{{id}}">Update</a></td> 
+            <td><a href="/libraryMember/{{memberID}}">Update</a></td> 
         </tr> 
         {{/each}} 
     </tbody> 
