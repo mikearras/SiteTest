@@ -1,0 +1,40 @@
+<html>
+
+{{!-- this should match authorrecord.js the add author section --}}
+<h3>Associate Author with Item:</h3>
+<form id="addauthor" action="/authorRecord" method="post">
+    {{!-- make sure the name="" matches the sql insert name in authorrecord.js --}}
+    Author: <select name="authorID"> 
+        {{#each authors}}
+        <option value="{{authorID}}">{{firstName}} {{lastName}}</option>
+        {{/each}}
+      </select> <br>
+    Item: <select name="itemID"> 
+        {{#each items}}
+        <option value="{{itemID}}">{{title}} </option>
+        {{/each}}
+      </select> <br>
+    <input type="submit" value="Submit">
+ </form>
+<br/>
+
+{{!-- SHOW ALL DATA IN DATABASE --}}
+<h3>Current Authors:</h3>
+<table>
+    <thead> 
+        <th>Author ID</th> 
+        <th>Item ID</th> 
+    </thead> 
+    <tbody>
+        {{#each authoritems}} 
+        <tr> 
+            <td>{{authorID}}</td> 
+            <td>{{itemID}}</td> 
+            {{!-- run javascript delete --}}
+            <td><button onclick="deleteAuthor({{id}})">Delete</button></td>
+            {{!-- go to update page --}}
+            <td><a href="/authorRecord/{{id}}">Update</a></td> 
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table> 

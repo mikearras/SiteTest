@@ -137,9 +137,17 @@
 <html>
 
 <h3>Add new catalog Items:</h3>
-<form id="addperson" action="/people" method="post">
-    First name: <input type="text" name="firstName"><br>
-    Last name: <input type="text" name="lastName"><br>
+<form id="addCatalogItem" action="/catalogItem" method="post">
+    Item ID: <select name="itemID"> 
+        {{#each items}}
+        <option value="{{itemID}}"> {{itemID}} {{title}} </option>
+        {{/each}}
+      </select> <br>
+    Checked Out: <select name="checkedOut"> 
+        <option value="1">Currently Checked Out (1) </option>
+        <option value="0">Available in Library (0)</option>
+      </select> <br>
+    Checkout Period (days): <input type="int" name="checkoutPeriod"><br>
     <input type="submit" value="Submit">
  </form>
 <br/>

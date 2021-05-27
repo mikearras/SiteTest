@@ -3,12 +3,12 @@ module.exports = function(){
     var router = express.Router();
 
     function getAuthors(res, mysql, context, complete){
-        mysql.pool.query("SELECT catalogID, itemID, checkedOut, checkoutPeriod FROM CatalogItems", function(error, results, fields){
+        mysql.pool.query("SELECT authorID, firstName, lastName FROM AuthorRecords", function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
                 res.end();
             }
-            context.catalogItem  = results;
+            context.authors  = results;
             complete();
         });
     }
@@ -24,8 +24,18 @@ module.exports = function(){
         });
     }
 
+    function getAuthorItems(res, mysql, context, complete){
+        mysql.pool.query("SELECT itemID, authorID FROM AuthorItem", function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.authoritems  = results;
+            complete();
+        });
+    }
 
-    /*Display all people. Requires web based javascript to delete users with AJAX*/
+    // Display all authorItems
 
     router.get('/', function(req, res){
         var callbackCount = 0;
@@ -33,35 +43,33 @@ module.exports = function(){
         // context.jsscripts = ["deleteperson.js","filterpeople.js","searchpeople.js"];
         var mysql = req.app.get('mysql');
         getAuthors(res, mysql, context, complete);
-        getItems(res, mysql, context, complete)
+        getItems(res, mysql, context, complete);
+        getAuthorItems(res, mysql, context, complete);
         function complete(){
             callbackCount++;
-            if(callbackCount >= 2){
-                res.render('catalogItem', context);
+            if(callbackCount >= 3){
+                res.render('authorItems', context);
             }
         }
     });
 
-    /* Adds an catalog Item*/
+    /* Adds an order*/
 
     router.post('/', function(req, res){
         var mysql = req.app.get('mysql');
-        var sql = "INSERT INTO CatalogItems (itemID, checkedOut, checkoutPeriod) VALUES (?, ?,?)";
+        var sql = "INSERT INTO AuthorItem (authorID, itemID) VALUES (?,?)";
         // these insert values should match the variables in authorRecord.handlebars
-        var inserts = [req.body.itemID, req.body.checkedOut, req.body.checkoutPeriod];
+        var inserts = [req.body.authorID, req.body.itemID];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(JSON.stringify(error))
                 res.write(JSON.stringify(error));
                 res.end();
             }else{
-                res.redirect('/catalogItem');
+                res.redirect('/authorItems');
             }
         });
     });
-
-
-
 
     return router;
 }();
