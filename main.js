@@ -28,11 +28,6 @@ app.use('/', express.static('public'));
 app.use('/home', express.static('public'));
 app.use('/authorItems', require('./authorItems.js'), express.static('public'));
 app.use('/libraryMember', require('./libraryMember.js'), express.static('public'));
-// app.use('/order', express.static('public'));
-// app.use('/catalogItem', express.static('public'));
-// app.use('/item', express.static('public'));
-// app.use('/authorRecord', require('./authorRecord.js'));
-
 
 // app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 // app.set('view engine', 'handlebars');
@@ -43,68 +38,16 @@ app.use('/libraryMember', require('./libraryMember.js'), express.static('public'
   res.render('home');
 });
 
-// app.get('/libraryMember', function (req, res) {
-//   let query = 'SELECT memberID, firstName, lastName FROM Member;';
-// 	db.pool.query(query, function(error, rows, fields){
-// 		if(error){
-// 			console.log("Query Failure. Error Code: " + error.code);
-// 			res.status(400);
-// 			return;
-// 		}
-// 		res.status(200).render('libraryMember', {member: rows});
-//   });
-// });
+app.use(function(req,res){
+  res.status(404);
+  res.render('404');
+});
 
-
-// app.get('/order', function (req, res) {
-//   let query = 'SELECT date, orderNumber, memberID FROM Orders;';
-// 	db.pool.query(query, function(error, rows, fields){
-// 		if(error){
-// 			console.log("Query Failure. Error Code: " + error.code);
-// 			res.status(400);
-// 			return;
-// 		}
-// 		res.status(200).render('order');
-// 	});
-// });
-
-// app.get('/catalogItem', function (req, res) {
-//   let query = 'SELECT itemID, checkedOut, checkoutPeriod FROM CatalogItems;';
-// 	db.pool.query(query, function(error, rows, fields){
-// 		if(error){
-// 			console.log("Query Failure. Error Code: " + error.code);
-// 			res.status(400);
-// 			return;
-// 		}
-// 		res.status(200).render('catalogItem');
-// 	});
-// });
-
-// app.get('/item', function (req, res) {
-//   let query = 'SELECT itemID, itemType, title, datePublished FROM ItemData;';
-// 	db.pool.query(query, function(error, rows, fields){
-// 		if(error){
-// 			console.log("Query Failure. Error Code: " + error.code);
-// 			res.status(400);
-// 			return;
-// 		}
-// 		res.status(200).render('item');
-// 	});
-// });
-
-// app.get('/authorRecord', function (req, res) {
-//   let query = 'SELECT authorID, firstName, lastName FROM AuthorRecords;';
-// 	db.pool.query(query, function(error, rows, fields){
-// 		if(error){
-// 			console.log("Query Failure. Error Code: " + error.code);
-// 			res.status(400);
-// 			return;
-// 		}
-// 		res.status(200).render('authorRecord', {author: rows});
-// 	});
-// });
-
-
+app.use(function(err, req, res, next){
+  console.error(err.stack);
+  res.status(500);
+  res.render('500');
+});
 
 
 app.listen(PORT, function () {

@@ -68,7 +68,7 @@ module.exports = function(){
         console.log("inside the display")
         var callbackCount = 0;
         var context = {};
-        context.jsscripts = ["searchTitle.js"];
+        context.jsscripts = ['searchTitle.js'];
         var mysql = req.app.get('mysql');
         getTitlesLike(req, res, mysql, context, complete);
         function complete(){

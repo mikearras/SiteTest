@@ -1,3 +1,4 @@
+console.log("searchTitle.js is refrenced")
 function searchItemByTitle() {
     console.log("inside the searchItemByTitle")
     //get the title
