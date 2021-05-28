@@ -18,6 +18,7 @@ PRIMARY KEY (`memberID`)
 
 
 
+
 CREATE TABLE Orders (  
 orderDate date NOT NULL,  
 orderNumber int(11) NOT NULL AUTO_INCREMENT, 

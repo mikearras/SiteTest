@@ -12,6 +12,7 @@ module.exports = function(){
             complete();
         });
     }
+    
 
     function getItems(res, mysql, context, complete){
         mysql.pool.query("SELECT itemID, itemType, title, datePublished FROM ItemData", function(error, results, fields){

@@ -33,7 +33,6 @@ app.use('/libraryMember', require('./libraryMember.js'), express.static('public'
 // app.set('view engine', 'handlebars');
 // app.set('mysql', mysql);
 
-
  app.get('/home', function (req, res) {
   res.render('home');
 });

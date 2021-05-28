@@ -13,6 +13,7 @@ module.exports = function(){
         });
     }
 
+    
     function getAuthorbyLastName(req, res, mysql, context, complete){
         var query = "SELECT firstName, lastName, authorID FROM AuthorRecords WHERE lastName = ?";
         console.log(req.params)

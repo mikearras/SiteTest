@@ -13,6 +13,7 @@ module.exports = function(){
         });
     }
 
+    
     function getOrders(res, mysql, context, complete){
         mysql.pool.query("SELECT orderDate, orderNumber, memberID FROM Orders", function(error, results, fields){
             if(error){

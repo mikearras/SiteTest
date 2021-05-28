@@ -13,6 +13,8 @@ module.exports = function(){
         });
     }
 
+    
+
     function getMembers(res, mysql, context, complete){
         mysql.pool.query("SELECT memberID, firstName, lastName FROM Member", function(error, results, fields){
             if(error){

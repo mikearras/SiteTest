@@ -13,6 +13,7 @@ module.exports = function(){
         });
     }
 
+    
     function getMember(res, mysql, context, memberID, complete){
         var sql = "SELECT memberID, firstName, lastName FROM Member WHERE memberID = ?";
         var inserts = [memberID];
