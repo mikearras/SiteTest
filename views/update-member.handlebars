@@ -1,9 +1,0 @@
-<html>
-<h1>Update {{member.firstName}} {{member.lastName}}:</h1>
-<form id="update-member" action="/libraryMember" method="post">
-    First name: <input type="text" name="firstName" value="{{member.firstName}}"><br>
-    Last name: <input type="text" name="lastName" value="{{member.lastName}}"><br>
-</form>
-<button onclick="updateMember({{member.memberID}})">Update</button>
-</html>
-
