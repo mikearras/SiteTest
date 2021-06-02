@@ -1,46 +1,42 @@
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Library Databse</title>
-    <script src="main.js"></script>
-    <link rel="stylesheet" href="styles.css">
-    </head>
-  <body>
-   
-<h1> Library Members:  Add, Select, Delete, Update and Search Library Members</h1>
+<html>
 
-    
-    
-{{!-- this should match libraryMember.js the add member section --}}
+<h1> Library Members: Add, Select, Delete, Update and Search Library Members</h1>
 <h3>Add new library member:</h3>
-<form class = "form" id="addmember" action="/libraryMember" method="post">
-   <label for="fname">First name:</label>
-   <input type="text" name="firstName"><br>
-    <label for="lname">Last name:</label>
-	<input type="text" name="lastName"><br>
-   <input type="submit" value="Submit"> 
- </form>
-<br/>
+
+<form id="addperson" action="/libraryMember" method="post">
+    First name: <input type="text" name="firstName"><br>
+    Last name: <input type="text" name="lastName"><br>
+    <input type="submit" value="Submit">
+</form>
+<br />
 
 
-<h3>Current Members:</h3>
+<form id='searchMember' action='' method=''>
+    <!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Search library members by last name:</label>
+    <input id='lastNameSearch' type='text' name='lastNameSearch' value=''>
+    <input type="button" value="Search" onclick="searchMemberByLastName()">
+    <input type="button" onclick="location.href=/libraryMember/;" value="Show All" />
+
+</form>
+
+<h2>Current Library Members</h2>
 <table>
-    <thead> 
-		<th>MemberID</th>
-        <th>First Name</th> 
-        <th>Last Name</th> 
-    </thead> 
+    <thead>
+        <th>First Name</th>
+        <th>Last Name</th>
+    </thead>
     <tbody>
-        {{#each members}} 
-        <tr> 
-			<td>{{memberID}}</td>
-            <td>{{firstName}}</td> 
-            <td>{{lastName}}</td> 
-            {{!-- run javascript delete --}}
-            <td><button onclick="deleteMember({{memberID}})">Delete</button></td>
-            {{!-- go to update page --}}
-            <td><a href="/libraryMember/{{memberID}}">Update</a></td> 
-        </tr> 
-        {{/each}} 
-    </tbody> 
-</table> 
+        {{#each member}}
+        <tr>
+            <td class="name">{{firstName}}</td>
+            <td class="name">{{lastName}}</td>
+            <td class="deletebtn"><button onclick="deleteMember({{memberID}})">Delete</button></td>
+            <td><a href="/libraryMember/{{memberID}}">Update</a></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+</html>
 		
