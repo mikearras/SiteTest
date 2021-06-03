@@ -25,6 +25,11 @@ app.use('/static', express.static('public'));
 app.set('mysql', mysql);
 app.use('/libraryMember', require('./libraryMember.js'));
 app.use('/order', require('./order.js'));
+app.use('/authorRecord', require('./authorRecord.js'), express.static('public'));
+app.use('/catalogItem', require('./catalogItem.js'), express.static('public'));
+app.use('/memberOrders', require('./memberOrders.js'), express.static('public'));
+app.use('/item', require('./item.js'), express.static('public'));
+app.use('/authorItems', require('./authorItems.js'), express.static('public'));
 
 
 app.use(function (req, res) {
