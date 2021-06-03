@@ -1,43 +1,47 @@
-module.exports = function(){
+module.exports = function () {
     var express = require('express');
     var router = express.Router();
 
-    function getOrders(res, mysql, context, complete){
-        mysql.pool.query("SELECT orderDate, orderNumber, memberID FROM Orders", function(error, results, fields){
-            if(error){
+
+    function getOrders(res, mysql, context, complete) {
+        mysql.pool.query("SELECT DATE_FORMAT(orderDate, '%a, %d %b %Y ') AS orderDate, orderNumber, memberID FROM Orders", function (error, results, fields) {
+            if (error) {
                 res.write(JSON.stringify(error));
                 res.end();
             }
-            context.order  = results;
+            context.order = results;
+            console.log(context.order);
+            complete();
+        });
+
+    }
+
+
+
+    function getMembers(res, mysql, context, complete) {
+        mysql.pool.query("SELECT memberID, firstName, lastName FROM Member", function (error, results, fields) {
+            if (error) {
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.members = results;
             complete();
         });
     }
 
-    
 
-    function getMembers(res, mysql, context, complete){
-        mysql.pool.query("SELECT memberID, firstName, lastName FROM Member", function(error, results, fields){
-            if(error){
-                res.write(JSON.stringify(error));
-                res.end();
-            }
-            context.members  = results;
-            complete();
-        });
-    }
+    //--Show/display  all orders.
 
-    /*Display all people. Requires web based javascript to delete users with AJAX*/
-
-    router.get('/', function(req, res){
+    router.get('/', function (req, res) {
         var callbackCount = 0;
         var context = {};
-        // context.jsscripts = ["deleteperson.js","filterpeople.js","searchpeople.js"];
+        context.css = ["styles.css"];
         var mysql = req.app.get('mysql');
         getOrders(res, mysql, context, complete);
         getMembers(res, mysql, context, complete);
-        function complete(){
+        function complete() {
             callbackCount++;
-            if(callbackCount >= 2){
+            if (callbackCount >= 2) {
                 res.render('order', context);
             }
         }
@@ -45,17 +49,17 @@ module.exports = function(){
 
     /* Adds an order*/
 
-    router.post('/', function(req, res){
+    router.post('/', function (req, res) {
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO Orders (orderDate, memberID) VALUES (?,?)";
         // these insert values should match the variables in authorRecord.handlebars
         var inserts = [req.body.orderDate, req.body.memberID];
-        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
-            if(error){
+        sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
+            if (error) {
                 console.log(JSON.stringify(error))
                 res.write(JSON.stringify(error));
                 res.end();
-            }else{
+            } else {
                 res.redirect('/order');
             }
         });

@@ -1,2 +1,11 @@
 /node_modules
-/dbcon.js
+dbcon.js
+
+
+#files from demo 
+filterpeople.js
+selectedplanet.js
+people.handlebars
+people.js
+planets.js
+

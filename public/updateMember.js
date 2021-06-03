@@ -1,11 +1,10 @@
-function updateMember(memberID){
+function updateMember(memberID) {
     $.ajax({
         url: '/libraryMember/' + memberID,
         type: 'PUT',
         data: $('#update-member').serialize(),
-        success: function(result){
+        success: function (result) {
             window.location.replace("./");
         }
     })
 };
-
