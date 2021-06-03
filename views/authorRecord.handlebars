@@ -1,96 +1,16 @@
-{{!-- <!DOCTYPE html>
-<html>
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Library Databse</title>
-    <script src="main.js"></script>
-    <link rel="stylesheet" href="styles.css">
-
-    </head>
-
-
-  <body>
-
-    <h1> Author Records: Add and Select Authors </h1>
-
-  <form>
-    <fieldset class= "fieldAdd">
-
-      <h3>Add Author Record to data base:</h3>
-
-      <div>
-        <label>First Name:
-            <input type="text" size="30" maxlength="100">
-        </label>
-      </div>
-
-      <div>
-        <label>Last Name:
-            <input type="text" size="30" maxlength="100">
-        </label>
-      </div>
-      <button type="button">Submit</button>
-
-
-       </fieldset >
-          <p>
-  
-      <fieldset class = "fieldSearch">
-        <h3>All Authors:</h3>
-        
-        <div>
-            <table>
-                <thead>
-                <tr>
-                    <th>authorID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                  </tr>
-                </thead>
-  
-                  <tbody>
-                  <tr>
-                    <td>123456</th>
-                    <td>Terry</th>
-                    <td>Jones</th>
-                    <td><button type="button">Select</button></td>
-                  </tr>
-                  <tr>
-                    <td>112921</th>
-                    <td>Cloe</th>
-                    <td>Stamph</th>
-                    <td><button type="button">Select</button></td>
-                  </tr>
-                  </tbody>
-  
-                  
-              </table>
-
-      </div>
-
-    </fieldset>
-
-
-
-  </body>
-</html> --}}
-<html>
-
-{{!-- this should match authorrecord.js the add author section --}}
 <h3>Add new authors:</h3>
 <form id="addauthor" action="/authorRecord" method="post">
     {{!-- make sure the name="" matches the sql insert name in authorrecord.js --}}
     First name: <input type="text" name="firstName"><br>
     Last name: <input type="text" name="lastName"><br>
     <input type="submit" value="Submit">
- </form>
-<br/>
+</form>
+<br />
 
 <form id='filter_people' action='' method=''>
-<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <!--- this form does not submit directly, the button handles all the interaction with backend -->
     <label> Filter by last name </label>
-    <select id='author_lastname_filter' name="authorlastname"> 
+    <select id='author_lastname_filter' name="authorlastname">
         {{#each authors}}
         <option value="{{authorID}}">{{lastName}}</option>
         {{/each}}
@@ -100,7 +20,7 @@
 
 
 <form id='search_people' action='' method=''>
-<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <!--- this form does not submit directly, the button handles all the interaction with backend -->
     <label> Search people for first name starting with:</label>
     <input id='first_name_search_string' type='text' name='first_name_search_string' value=''>
     <input type="button" value="Search" onclick="searchAuthorByFirstName()">
@@ -109,21 +29,21 @@
 {{!-- SHOW ALL DATA IN DATABASE --}}
 <h3>Current Authors:</h3>
 <table>
-    <thead> 
-        <th>First Name</th> 
-        <th>Last Name</th> 
-    </thead> 
+    <thead>
+        <th>First Name</th>
+        <th>Last Name</th>
+    </thead>
     <tbody>
-        {{#each authors}} 
-        <tr> 
-			<td>{{authorID}}</td>
-            <td>{{firstName}}</td> 
-            <td>{{lastName}}</td> 
+        {{#each authors}}
+        <tr>
+            <td>{{authorID}}</td>
+            <td>{{firstName}}</td>
+            <td>{{lastName}}</td>
             {{!-- run javascript delete --}}
             <td><button onclick="deleteAuthor({{authorID}})">Delete</button></td>
             {{!-- go to update page --}}
-            <td><a href="/authorRecord/{{authorID}}">Update</a></td> 
-        </tr> 
-        {{/each}} 
-    </tbody> 
-</table> 
+            <td><a href="/authorRecord/{{authorID}}">Update</a></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
