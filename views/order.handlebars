@@ -1,5 +1,5 @@
 <html>
-
+<h1> Orders: Display and Add</h1>
 <h3>Add new order:</h3>
 <form onSubmit="event.preventDefault" id="addorder" action="/order" method="post">
     Order Date: <input type="date" name="orderDate" id="date"><br>
@@ -7,6 +7,8 @@
         {{#each members}}
         <option value="{{memberID}}">{{firstName}} {{lastName}}</option>
         {{/each}}
+        </select> 
+        <br>
     </select> <br>
     <input type="submit" value="Submit">
 </form>
@@ -18,18 +20,16 @@
 <h3>Current Orders:</h3>
 <table>
     <thead>
-        <th>orderDate</th>
-        <th>memberId</th>
+        <th>Order Date</th>
+        <th>Member ID</th>
+        <th>Order Number</th>
     </thead>
     <tbody>
         {{#each order}}
         <tr>
             <td class="date">{{orderDate}}</td>
             <td class="memberID">{{memberID}}</td>
-            {{!-- run javascript delete --}}
-            <td class="deletebtn"><button onclick="deleteOrder({{memberID}})">Delete</button></td>
-            {{!-- go to update page --}}
-            <td><a href="/authorRecord/{{memberID}}">Update</a></td>
+            <td class="orderNumber">{{orderNumber}}</td>
         </tr>
         {{/each}}
     </tbody>

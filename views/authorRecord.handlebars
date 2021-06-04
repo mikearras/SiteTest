@@ -1,3 +1,5 @@
+<h1> Author Records: Display and Add</h1>
+
 <h3>Add new authors:</h3>
 <form id="addauthor" action="/authorRecord" method="post">
     {{!-- make sure the name="" matches the sql insert name in authorrecord.js --}}
@@ -7,24 +9,6 @@
 </form>
 <br />
 
-<form id='filter_people' action='' method=''>
-    <!--- this form does not submit directly, the button handles all the interaction with backend -->
-    <label> Filter by last name </label>
-    <select id='author_lastname_filter' name="authorlastname">
-        {{#each authors}}
-        <option value="{{authorID}}">{{lastName}}</option>
-        {{/each}}
-    </select><br>
-    <input type="button" value="Filter" onclick="filterAuthorByLastName()">
-</form>
-
-
-<form id='search_people' action='' method=''>
-    <!--- this form does not submit directly, the button handles all the interaction with backend -->
-    <label> Search people for first name starting with:</label>
-    <input id='first_name_search_string' type='text' name='first_name_search_string' value=''>
-    <input type="button" value="Search" onclick="searchAuthorByFirstName()">
-</form>
 
 {{!-- SHOW ALL DATA IN DATABASE --}}
 <h3>Current Authors:</h3>
@@ -39,10 +23,6 @@
             <td>{{authorID}}</td>
             <td>{{firstName}}</td>
             <td>{{lastName}}</td>
-            {{!-- run javascript delete --}}
-            <td><button onclick="deleteAuthor({{authorID}})">Delete</button></td>
-            {{!-- go to update page --}}
-            <td><a href="/authorRecord/{{authorID}}">Update</a></td>
         </tr>
         {{/each}}
     </tbody>

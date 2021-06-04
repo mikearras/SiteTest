@@ -1,141 +1,5 @@
-{{!-- <!DOCTYPE html>
 <html>
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Library Databse</title>
-    <script src="main.js"></script>
-
-    </head>
-
-
-  <body>
-    
-    
-      <h1> Catalog Items: Add, Select, Delete and Search for Catalog Items</h1>
-
-        <fieldset class = "fieldAdd">
-        
-          <h3>Add Catalog Item to Database</h3>
-    
-          <div>
-            <label>itemID:
-                <input type="text" size="30" maxlength="100">
-            </label>
-          </div>
-          <div>
-            <label>checkoutPeriod:
-                <input type="int" size="30" maxlength="100">
-            </label>
-          </div>
-          <div>
-            <label>checkedOut:    </label>
-          </div>
-          <div>
-            <input type="radio" id="yes" name="toggle" value="yes">
-              <label for="yes">True (checked out)</label><br>
-              <input type="radio" id="no" name="toggle" value="no">
-              <label for="no">False (available)</label><br>
-          </div>
-          <button type="button">Submit</button>
-              
-          
-       
-
-        </fieldset>
-        
-
-     <fieldset class = "fieldSearch">
-       <!-- <button type="button">See all catalog items</button> -->
-       <div>
-          <h3>Item Search:  </h3>
-          <label>itemID:  <input type="int" size="30" maxlength="100">
-          </label>
-          <label>Checkout Period:  <input type="int" size="30" maxlength="100">
-          </label>
-          <label>checkedOut:    </label>
-          </div>
-          <div>
-
-            <input type="radio" id="yes" name="toggle" value="yes">
-              <label for="yes">True (checked out)</label><br>
-              <input type="radio" id="no" name="toggle" value="no">
-              <label for="no">False (available)</label><br>
-          </div>
-          <button type="button">Submit</button>
-        </div>
-        <p>
-
-        <h3>All Items/Search Results:</h3>
-      
-
-        <div>
-          <table>
-              <thead>
-              <tr>
-                <th>catalogID</th>
-                <th>itemID</th>
-                  <th>checkoutPeriod (int days)</th>
-                  <th>checkedOut (bool)</th>
-                </tr>
-              </thead>
-
-                <tbody>
-                <tr>
-                  <td>9</td>
-                  <td>222</td>
-                  <td>30</th>
-                  <td>False</td>
-                  <td><button type="button">Select</button></td>
-                  <td><button type="button">Delete</button></td>
-
-                </tr>
-                <tr>
-                  <td>8</th>
-                  <td>221</th>
-                  <td>30</th>
-                  <td>True</th>
-                  <td><button type="button">Select</button></td>
-                   <td><button type="button">Delete</button></td>
-                
-                </tr>
-
-                <tr>
-                  <td>7</th>
-                  <td>220</th>
-                  <td>30</th>
-                  <td>True</th>
-                  <td><button type="button">Select</button></td>
-                   <td><button type="button">Delete</button></td>
-                
-                </tr>
-
-                <tr>
-                  <td>6</th>
-                  <td>219</th>
-                  <td>30</th>
-                  <td>False</th>
-                  <td><button type="button">Select</button></td>
-                   <td><button type="button">Delete</button></td>
-                
-                </tr>
-
-                
-                </tbody>
-
-                
-            </table>
-                
-        </div><p>
-        <button type="button">Clear Search Results (Show All Catalog Items)</button>
-      </fieldset>
-
-   
-  </body>
-</html> --}}
-
-
-<html>
+<h1> Catalog Items: Display and Add</h1>
 
 <h3>Add new catalog Items:</h3>
 <form id="addCatalogItem" action="/catalogItem" method="post">
@@ -171,9 +35,9 @@
             <td>{{checkedOut}}</td> 
             <td>{{checkoutPeriod}}</td>
             {{!-- run javascript delete --}}
-            <td><button onclick="deleteAuthor({{id}})">Delete</button></td>
+            {{!-- <td><button onclick="deleteAuthor({{id}})">Delete</button></td> --}}
             {{!-- go to update page --}}
-            <td><a href="/authorRecord/{{id}}">Update</a></td> 
+            {{!-- <td><a href="/authorRecord/{{id}}">Update</a></td>  --}}
         </tr> 
         {{/each}} 
     </tbody> 

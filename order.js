@@ -51,9 +51,8 @@ module.exports = function () {
 
     router.post('/', function (req, res) {
         var mysql = req.app.get('mysql');
-        var sql = "INSERT INTO Orders (orderDate, memberID) VALUES (?,?)";
-        // these insert values should match the variables in authorRecord.handlebars
-        var inserts = [req.body.orderDate, req.body.memberID];
+        var sql = "INSERT INTO Orders (orderDate, memberID, orderNumber) VALUES (?,?,?)";
+        var inserts = [req.body.orderDate, req.body.memberID, req.body.orderNumber];
         sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
             if (error) {
                 console.log(JSON.stringify(error))

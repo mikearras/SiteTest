@@ -3,7 +3,7 @@ module.exports = function(){
     var router = express.Router();
 
     function getAuthors(res, mysql, context, complete){
-        mysql.pool.query("SELECT itemID, itemType, title, datePublished FROM ItemData", function(error, results, fields){
+        mysql.pool.query("SELECT itemID, itemType, title, DATE_FORMAT(datePublished, '%a, %d %b %Y ') AS datePublished FROM ItemData", function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
                 res.end();

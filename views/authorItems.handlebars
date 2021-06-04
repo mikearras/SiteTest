@@ -3,6 +3,7 @@
 <head>
 
 </head>
+<h1> Author Items: Display, Add, and Delete Relationship</h1>
 
 {{!-- this should match authorrecord.js the add author section --}}
 <h3>Associate Author with Item:</h3>
@@ -45,7 +46,7 @@
             {{!-- run javascript delete --}}
             <td><button onclick="deleteAuthor({{id}})">Delete</button></td>
             {{!-- go to update page --}}
-            <td><a href="/authorRecord/{{id}}">Update</a></td>
+            {{!-- <td><a href="/authorRecord/{{id}}">Update</a></td> --}}
         </tr>
         {{/each}}
     </tbody>

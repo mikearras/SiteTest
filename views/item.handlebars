@@ -1,4 +1,5 @@
 <html>
+<h1> Items: Display and Add </h1>
 
 <h3>Add Items:</h3>
 <form id="additem" action="/item" method="post">
@@ -40,9 +41,9 @@
             <td>{{title}}</td> 
             <td>{{datePublished}}</td> 
             {{!-- run javascript delete --}}
-            <td><button onclick="deleteAuthor({{id}})">Delete</button></td>
+            {{!-- <td><button onclick="deleteAuthor({{id}})">Delete</button></td> --}}
             {{!-- go to update page --}}
-            <td><a href="/authorRecord/{{id}}">Update</a></td> 
+            {{!-- <td><a href="/authorRecord/{{id}}">Update</a></td>  --}}
         </tr> 
         {{/each}} 
     </tbody> 

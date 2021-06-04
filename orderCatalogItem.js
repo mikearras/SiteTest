@@ -49,7 +49,7 @@ module.exports = function(){
         function complete(){
             callbackCount++;
             if(callbackCount >= 3){
-                res.render('memberOrders', context);
+                res.render('orderCatalogItem', context);
             }
         }
     });
@@ -60,14 +60,14 @@ module.exports = function(){
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO OrderCatalogItems (catalogID, orderNumber) VALUES (?,?)";
         // these insert values should match the variables in authorRecord.handlebars
-        var inserts = [req.body.authorID, req.body.itemID];
+        var inserts = [req.body.catalogID, req.body.orderNumber];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(JSON.stringify(error))
                 res.write(JSON.stringify(error));
                 res.end();
             }else{
-                res.redirect('/memberOrders');
+                res.redirect('/orderCatalogItem');
             }
         });
     });

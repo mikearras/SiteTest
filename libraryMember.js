@@ -84,6 +84,19 @@ module.exports = function () {
 
     router.post('/', function (req, res) {
         var mysql = req.app.get('mysql');
+        
+        if (req.body.firstName == '') {
+            console.log("no full name")
+            alert("Please enter full name")
+            return false
+        }
+
+        if (req.body.lastName == '') {
+            console.log("no full name")
+            alert("Please enter full name")
+            return false
+        }
+
         var sql = "INSERT INTO Member (firstName, lastName) VALUES (?,?)";
         var inserts = [req.body.firstName, req.body.lastName];
         sql = mysql.pool.query(sql, inserts, function (error, results, fields) {

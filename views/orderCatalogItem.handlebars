@@ -1,16 +1,17 @@
 <html>
+<h1> Order - Catalog Item: Display and Add</h1>
 
 {{!-- this should match authorrecord.js the add author section --}}
-<h3>Associate Member with Order:</h3>
+<h3>Associate Order with Catalog Item:</h3>
 <form id="addauthor" action="/memberOrders" method="post">
     {{!-- make sure the name="" matches the sql insert name in authorrecord.js --}}
-    Member: <select name="authorID"> 
-        {{#each members}}
-        <option value="{{memberID}}">{{firstName}} {{lastName}}</option>
+    Order: <select name="orderNumber"> 
+        {{#each orderNumber}}
+        <option value="{{orderNumber}}">"order date:" {{orderDate}} "member id:"{{memberID}} "order Number:" {{orderNumber}}</option>
         {{/each}}
       </select> <br>
-    Order ID: <select name="orderNumber"> 
-        {{#each order}}
+    Catalog Item: <select name="catalogItem"> 
+        {{#each catalogItem}}
         <option value="{{orderNumber}}">{{orderNumber}} </option>
         {{/each}}
       </select> <br>
@@ -27,14 +28,14 @@
         <th>Order Number</th> 
     </thead> 
     <tbody>
-        {{#each memberOrders}} 
+        {{#each catalogItem}} 
         <tr> 
             <td>{{catalogID}}</td> 
-            <td>{{orderNumber}}</td> 
+            <td>{{title}}</td> 
             {{!-- run javascript delete --}}
-            <td><button onclick="deleteAuthor({{id}})">Delete</button></td>
+            {{!-- <td><button onclick="deleteAuthor({{id}})">Delete</button></td> --}}
             {{!-- go to update page --}}
-            <td><a href="/memberOrders/{{id}}">Update</a></td> 
+            {{!-- <td><a href="/memberOrders/{{id}}">Update</a></td>  --}}
         </tr> 
         {{/each}} 
     </tbody> 
