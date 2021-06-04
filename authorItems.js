@@ -26,7 +26,7 @@ module.exports = function () {
     }
 
     function getAuthorItems(res, mysql, context, complete) {
-        mysql.pool.query("SELECT AuthorItem.itemID, AuthorItem.authorID FROM AuthorItem", function (error, results, fields) {
+        mysql.pool.query("SELECT AuthorItem.itemID, AuthorItem.authorID, AuthorRecords.firstName, ItemData.title FROM AuthorItem JOIN AuthorRecords ON AuthorRecords.authorID = AuthorItem.authorID JOIN ItemData ON ItemData.itemID = AuthorItem.itemID", function (error, results, fields) {
             if (error) {
                 res.write(JSON.stringify(error));
                 res.end();
