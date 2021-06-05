@@ -45,7 +45,6 @@ module.exports = function () {
     router.get('/', function (req, res) {
         var callbackCount = 0;
         var context = {};
-        // context.jsscripts = ["deleteperson.js","filterpeople.js","searchpeople.js"];
         context.css = ['styles.css'];
         var mysql = req.app.get('mysql');
 
@@ -64,8 +63,6 @@ module.exports = function () {
     });
 
 
-
-
     /* Adds an orderCatalogItem*/
 
     router.post('/', function (req, res) {
@@ -73,6 +70,7 @@ module.exports = function () {
         var sql = "INSERT INTO OrderCatalogItems (orderNumber, catalogID) VALUES (?,?)";
         var inserts = [req.body.orderNumber, req.body.catalogID];
         console.log(inserts);
+        console.log(req.body);
         sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
             if (error) {
                 console.log(JSON.stringify(error))

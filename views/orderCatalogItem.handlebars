@@ -8,7 +8,7 @@
         <option value="{{orderNumber}}">{{orderNumber}}</option>
         {{/each}}
     </select> <br>
-    Catalog Item: <select name="catalogItem">
+    Catalog Item: <select name="catalogID">
         {{#each catalogItem}}
         <option value="{{catalogID}}">{{catalogID}}</option>
         {{/each}}
@@ -22,23 +22,17 @@
 <h3>All Order Catalog Items:</h3>
 <table>
     <thead>
-        <th>Catalog ID</th>
         <th>Order Number</th>
+        <th>Catalog ID</th>
     </thead>
+
     <tbody>
-
+        {{#each orderCatalogItem}}
         <tr>
-            {{#each orderCatalogItem}}
-            <td>{{catalogID}}</td>
-            <td>{{orderNumber}}</td>
-
-            {{/each}}
-
-            {{!-- run javascript delete --}}
-            {{!-- <td><button onclick="deleteAuthor({{id}})">Delete</button></td> --}}
-            {{!-- go to update page --}}
-            {{!-- <td><a href="/memberOrders/{{id}}">Update</a></td> --}}
+            <td class="orderNumber">{{orderNumber}}</td>
+            <td class="catalogID">{{catalogID}}</td>
         </tr>
-
+        {{/each}}
     </tbody>
+
 </table>

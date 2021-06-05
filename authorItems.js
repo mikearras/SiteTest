@@ -42,7 +42,7 @@ module.exports = function () {
     router.get('/', function (req, res) {
         var callbackCount = 0;
         var context = {};
-        //context.jsscripts = ["deleteperson.js","filterpeople.js","searchpeople.js"];
+        context.jsscripts = ["deleteAuthorItem.js"];
         context.css = ["styles.css"];
         var mysql = req.app.get('mysql');
         getAuthors(res, mysql, context, complete);
@@ -73,6 +73,25 @@ module.exports = function () {
             }
         });
     });
+
+    //delete authorItem
+    router.delete('/:authorID', function (req, res) {
+        console.log("got to delete")
+        var mysql = req.app.get('mysql');
+        var sql = "DELETE FROM AuthorItem WHERE authorID=?";
+        var inserts = [req.params.authorID];
+        sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
+            if (error) {
+                console.log(error)
+                res.write(JSON.stringify(error));
+                res.status(400);
+                res.end();
+            } else {
+                res.status(202).end();
+            }
+        })
+    })
+
 
     return router;
 }();

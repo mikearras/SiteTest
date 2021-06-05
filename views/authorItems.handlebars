@@ -40,12 +40,9 @@
             <td>{{firstName}} {{lastName}}</td>
             <td class="ID">{{itemID}}</td>
             <td>{{title}}</td>
-
-
             {{!-- run javascript delete --}}
-            <td><button onclick="deleteAuthor({{id}})">Delete</button></td>
-            {{!-- go to update page --}}
-            {{!-- <td><a href="/authorRecord/{{id}}">Update</a></td> --}}
+            <td class="deletebtn"><button onclick="deleteAuthorItem({{authorID}})">Delete Relationship</button></td>
+
         </tr>
         {{/each}}
     </tbody>
