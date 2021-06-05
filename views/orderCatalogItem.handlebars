@@ -1,42 +1,44 @@
 <html>
 <h1> Order - Catalog Item: Display and Add</h1>
 
-{{!-- this should match authorrecord.js the add author section --}}
 <h3>Associate Order with Catalog Item:</h3>
-<form id="addauthor" action="/memberOrders" method="post">
-    {{!-- make sure the name="" matches the sql insert name in authorrecord.js --}}
-    Order: <select name="orderNumber"> 
-        {{#each orderNumber}}
-        <option value="{{orderNumber}}">"order date:" {{orderDate}} "member id:"{{memberID}} "order Number:" {{orderNumber}}</option>
+<form id="addOrderCatalogItem" action="/orderCatalogItem" method="post">
+    Order: <select name="orderNumber">
+        {{#each order}}
+        <option value="{{orderNumber}}">{{orderNumber}}</option>
         {{/each}}
-      </select> <br>
-    Catalog Item: <select name="catalogItem"> 
+    </select> <br>
+    Catalog Item: <select name="catalogItem">
         {{#each catalogItem}}
-        <option value="{{orderNumber}}">{{orderNumber}} </option>
+        <option value="{{catalogID}}">{{catalogID}}</option>
         {{/each}}
-      </select> <br>
+    </select> <br>
     <input type="submit" value="Submit">
- </form>
-<br/>
+</form>
+<br />
 
 
 {{!-- SHOW ALL DATA IN DATABASE --}}
-<h3>Current Authors:</h3>
+<h3>All Order Catalog Items:</h3>
 <table>
-    <thead> 
-        <th>Catalog ID</th> 
-        <th>Order Number</th> 
-    </thead> 
+    <thead>
+        <th>Catalog ID</th>
+        <th>Order Number</th>
+    </thead>
     <tbody>
-        {{#each catalogItem}} 
-        <tr> 
-            <td>{{catalogID}}</td> 
-            <td>{{title}}</td> 
+
+        <tr>
+            {{#each orderCatalogItem}}
+            <td>{{catalogID}}</td>
+            <td>{{orderNumber}}</td>
+
+            {{/each}}
+
             {{!-- run javascript delete --}}
             {{!-- <td><button onclick="deleteAuthor({{id}})">Delete</button></td> --}}
             {{!-- go to update page --}}
-            {{!-- <td><a href="/memberOrders/{{id}}">Update</a></td>  --}}
-        </tr> 
-        {{/each}} 
-    </tbody> 
-</table> 
+            {{!-- <td><a href="/memberOrders/{{id}}">Update</a></td> --}}
+        </tr>
+
+    </tbody>
+</table>
