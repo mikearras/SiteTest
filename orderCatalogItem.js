@@ -4,7 +4,9 @@ module.exports = function () {
 
 
     function getOrders(res, mysql, context, complete) {
-        mysql.pool.query("SELECT orderNumber FROM Orders", function (error, results, fields) {
+        // mysql.pool.query("SELECT orderNumber, DATE_FORMAT(orderDate, '%a, %d %b %Y ') AS orderDate FROM Orders", function (error, results, fields) {
+
+        mysql.pool.query("SELECT  DATE_FORMAT(Orders.orderDate, '%a, %d %b %Y ') AS orderDate, Orders.orderNumber, Member.firstName, Member.lastName FROM Orders, Member WHERE Orders.memberID = Member.memberID", function (error, results, fields) {
             if (error) {
                 res.write(JSON.stringify(error));
                 res.end();
@@ -15,7 +17,7 @@ module.exports = function () {
     }
 
     function getCatalogItems(res, mysql, context, complete) {
-        mysql.pool.query("SELECT catalogID FROM CatalogItems", function (error, results, fields) {
+        mysql.pool.query("SELECT  CatalogItems.catalogID, CatalogItems.checkedOut, CatalogItems.checkoutPeriod, ItemData.title, ItemData.itemType FROM OrderCatalogItems, CatalogItems, ItemData WHERE OrderCatalogItems.catalogID = CatalogItems.catalogID AND ItemData.itemID = CatalogItems.itemID", function (error, results, fields) {
             if (error) {
                 res.write(JSON.stringify(error));
                 res.end();

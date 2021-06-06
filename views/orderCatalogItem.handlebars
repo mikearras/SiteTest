@@ -5,12 +5,12 @@
 <form id="addOrderCatalogItem" action="/orderCatalogItem" method="post">
     Order: <select name="orderNumber">
         {{#each order}}
-        <option value="{{orderNumber}}">{{orderNumber}}</option>
+        <option value="{{orderNumber}}">{{firstName}} {{lastName}}'s order on {{orderDate}}</option>
         {{/each}}
     </select> <br>
     Catalog Item: <select name="catalogID">
         {{#each catalogItem}}
-        <option value="{{catalogID}}">{{catalogID}}</option>
+        <option value="{{catalogID}}">Catalog ID [{{catalogID}}] {{title}} {{itemType}} is currently (1 - checked out / 0- available) {{checkedOut}} for {{checkoutPeriod}} days</option>
         {{/each}}
     </select> <br>
     <input type="submit" value="Submit">

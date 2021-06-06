@@ -20,16 +20,16 @@
 <h3>Current Orders:</h3>
 <table>
     <thead>
-        <th>Order Date</th>
-        <th>Member ID</th>
         <th>Order Number</th>
+        <th>Member ID</th>
+        <th>Order Date</th>
     </thead>
     <tbody>
         {{#each order}}
         <tr>
-            <td class="date">{{orderDate}}</td>
-            <td class="memberID">{{memberID}}</td>
             <td class="orderNumber">{{orderNumber}}</td>
+            <td class="memberID">{{memberID}}</td>
+            <td class="date">{{orderDate}}</td>
         </tr>
         {{/each}}
     </tbody>
