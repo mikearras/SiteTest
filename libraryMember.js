@@ -27,23 +27,6 @@ module.exports = function () {
         });
     }
 
-    /* Search for member by last name*/
-    function getMemberWithNameLike(req, res, mysql, context, complete) {
-        //sanitize the input as well as include the % character
-        var query = "SELECT memberID, firstName, lastName  FROM Member WHERE CONCAT(firstName, ' ' , lastName) LIKE " + mysql.pool.escape(req.params.s + '%');
-        console.log(query);
-        mysql.pool.query(query, function (error, results, fields) {
-            if (error) {
-                res.write(JSON.stringify(error));
-                res.end();
-            }
-            console.log(query);
-            context.member = results;
-            complete();
-        });
-    }
-
-
     /*Display all people. Requires web based javascript to delete users with AJAX*/
 
     router.get('/', function (req, res) {

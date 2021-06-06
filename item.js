@@ -13,28 +13,11 @@ module.exports = function () {
         });
     }
 
-    /* Find people whose fname starts with a given string in the req */
-    function getTitlesLike(req, res, mysql, context, complete) {
-        //sanitize the input as well as include the % character
-        var query = "SELECT title FROM ItemData WHERE title LIKE " + mysql.pool.escape(req.params.s + '%');
-        console.log(query)
-
-        mysql.pool.query(query, function (error, results, fields) {
-            if (error) {
-                res.write(JSON.stringify(error));
-                res.end();
-            }
-            context.item = results;
-            complete();
-        });
-    }
-
     /*Display all people. Requires web based javascript to delete users with AJAX*/
 
     router.get('/', function (req, res) {
         var callbackCount = 0;
         var context = {};
-        // context.jsscripts = ["deleteperson.js","filterpeople.js","searchpeople.js"];
         context.css = ['styles.css'];
         var mysql = req.app.get('mysql');
         getAuthors(res, mysql, context, complete);
@@ -79,8 +62,6 @@ module.exports = function () {
             }
         }
     });
-
-
 
     return router;
 }();
