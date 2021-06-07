@@ -1,5 +1,5 @@
 <html>
-<h1> Orders: Display and Add</h1>
+<h1> Display and Add Orders</h1>
 <h3>Add new order:</h3>
 <form onSubmit="event.preventDefault" id="addorder" action="/order" method="post">
     Order Date: <input type="date" name="orderDate" id="date"><br>
@@ -7,8 +7,8 @@
         {{#each members}}
         <option value="{{memberID}}">{{firstName}} {{lastName}}</option>
         {{/each}}
-        </select> 
-        <br>
+    </select>
+    <br>
     </select> <br>
     <input type="submit" value="Submit">
 </form>

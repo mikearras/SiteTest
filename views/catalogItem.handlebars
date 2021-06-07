@@ -1,45 +1,46 @@
 <html>
-<h1> Catalog Items: Display and Add</h1>
+<h1> Display and Add Catalog Items</h1>
 
 <h3>Add new catalog Items:</h3>
 <form id="addCatalogItem" action="/catalogItem" method="post">
-    Item ID: <select name="itemID"> 
+    Item ID: <select name="itemID">
         {{#each items}}
         <option value="{{itemID}}"> {{itemID}} {{title}} </option>
         {{/each}}
-      </select> <br>
-    Checked Out: <select name="checkedOut"> 
+    </select> <br>
+    Checked Out: <select name="checkedOut">
         <option value="1">Currently Checked Out (1) </option>
         <option value="0">Available in Library (0)</option>
-      </select> <br>
+    </select> <br>
     Checkout Period (days): <input type="int" name="checkoutPeriod"><br>
     <input type="submit" value="Submit">
- </form>
-<br/>
+</form>
+<br />
 
 
 {{!-- SHOW ALL DATA IN DATABASE --}}
 <h3>Current Catalog Items:</h3>
 <table>
-    <thead> 
-        <th>catalogID</th> 
-        <th>itemID</th> 
-        <th>checkedOut</th> 
-        <th>checkoutPeriod</th> 
-    </thead> 
+    <thead>
+        <th>catalogID</th>
+        <th>itemID</th>
+        <th>checkedOut</th>
+        <th>checkoutPeriod</th>
+    </thead>
     <tbody>
-        {{#each catalogItem}} 
-        <tr> 
-            <td>{{catalogID}}</td> 
+        {{#each catalogItem}}
+        <tr>
+            <td>{{catalogID}}</td>
             <td>{{itemID}}</td>
-            <td>{{checkedOut}}</td> 
+            <td>{{checkedOut}}</td>
             <td>{{checkoutPeriod}}</td>
             {{!-- run javascript delete --}}
             {{!-- <td><button onclick="deleteAuthor({{id}})">Delete</button></td> --}}
             {{!-- go to update page --}}
-            {{!-- <td><a href="/authorRecord/{{id}}">Update</a></td>  --}}
-        </tr> 
-        {{/each}} 
-    </tbody> 
-</table> 
+            {{!-- <td><a href="/authorRecord/{{id}}">Update</a></td> --}}
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
 </html>

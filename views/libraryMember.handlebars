@@ -1,7 +1,7 @@
 <html>
 
-<h1> Library Members: Display, Add, Delete, Update and Search Library Members</h1>
-<h3>Add new library member:</h3>
+<h1> Display, Add, Delete, Update and Search for Library Members</h1>
+<h3>Add a new library member:</h3>
 
 <form id="addperson" action="/libraryMember" method="post">
     First name: <input type="text" name="firstName"><br>
@@ -13,14 +13,14 @@
 
 <form id='searchMember' action='' method=''>
     <!--- this form does not submit directly, the button handles all the interaction with backend -->
-    <label> Search library members by name:</label>
+    <label> Search library members by last name:</label>
     <input id='lastNameSearch' type='text' name='lastNameSearch' value=''>
     <input type="button" value="Search" onclick="searchMemberByLastName()">
     <input type="button" onclick="location.href=/libraryMember/;" value="Show All" />
 
 </form>
 
-<h2>Current Library Members</h2>
+<h3>Current Library Members</h3>
 <table>
     <thead>
         <th>Member ID</th>

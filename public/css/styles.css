@@ -1,27 +1,45 @@
 table {
-    width: 40%;
     border-collapse: collapse;
 	table-layout: auto;
 }
+h1 {
+  border: 1px solid black;
+  width:  50%;
+  text-align: center;
+  background-color: lightgray;
+  padding: .2em;
+  
+}
+
+h3 {
+  border: 1px solid black;
+  width:  30%;
+  text-align: left;
+  background-color: lightskyblue;
+  padding-left: .2em;
+
+}
+
 
 th, td, tr {
     border: 1px solid black;
-    padding:  5px;
-	
+    padding:  .2em;
     
-}
+	}
 
 
 
 thead{
 
     background-color: lightgray;
+   
 }
 
 /* top naviation bar styling */
 .topnav {
     background-color: #333;
     overflow: hidden;
+   
   }
   
   /* Style the links inside the navigation bar */
@@ -98,9 +116,10 @@ thead{
 
 .deletebtn {
   text-align: center;
-  width: 15%;
+  width: 40%;
 
 }
+
 
 .name {
   width: 20%;
@@ -108,4 +127,4 @@ thead{
 }
 =======
 }
->>>>>>> Stashed changes
+>>>>>>> Stashed cha
